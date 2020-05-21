@@ -7,13 +7,16 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 
 from tracker.models import MyUser
+from tracker.models import Ticket
 from tracker.forms import LoginForm
+from tracker.forms import SubmitTicketForm
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'index.html')
+    data = Ticket.objects.all()
+    return render(request, 'index.html', {'data': data})
 
 
 def loginview(request):
@@ -42,3 +45,21 @@ def logoutview(request):
         logout(request)
 
     return HttpResponseRedirect(reverse('login'))
+
+
+def submitticket(request):
+    html = 'submit_ticket_form.html'
+
+    if request.method == 'POST':
+        form = SubmitTicketForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            Ticket.objects.create(
+                title=data['title'],
+                description=data['description']
+            )
+            return HttpResponseRedirect(reverse('homepage'))
+
+    form = SubmitTicketForm()
+
+    return render(request, html, {'form': form})
