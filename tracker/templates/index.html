@@ -1,4 +1,96 @@
-<a href='/logout/'>Logout</a>
-<h1>Bug Tracker</h1>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Bug Tracker</title>
+  </head>
 
+<body>
+<a href='/logout/'>Logout</a>
+</br>
+</br>
+<p><a href='/submitticket'><button>Submit New Ticket</button></a></p>
+<h1>Bug Tracker</h1>
+<div id='new_tickets'>
 <h3>New Tickets</h3>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Reported By</th>
+        <th>Date Submitted</th>
+        <th>Ticket ID</th>
+    </tr>
+{% for ticketdetail in new_ticket %}
+    <tr>
+        <td>{{ ticketdetail.title }}</td>
+        <td><a href='/userdetails/{{ ticketdetail.filing_user.id }}/'>{{ ticketdetail.filing_user }}</a></td>
+        <td>{{ ticketdetail.date }}</td>
+        <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
+    </tr>
+</table>
+{% endfor %}
+</div>
+<div id='in_progress_tickets'>
+<h3>In-Progress Tickets</h3>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Assigned To</th>
+        <th>Reported By</th>
+        <th>Date Submitted</th>
+        <th>Ticket ID</th>
+    </tr>
+{% for ticketdetail in in_progress_ticket %}
+    <tr>
+        <td>{{ ticketdetail.title }}</td>
+        <td><a href='/userdetails/{{ ticketdetail.assigned_user.id }}/'>{{ ticketdetail.assigned_user }}</a></td>
+        <td><a href='/userdetails/{{ ticketdetail.filing_user.id }}/'>{{ ticketdetail.filing_user }}</a></td>
+        <td>{{ ticketdetail.date }}</td>
+        <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
+    </tr>
+</table>
+{% endfor %}
+</div>
+<div id='completed_tickets'>
+<h3>Completed Tickets</h3>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Reported By</th>
+        <th>Date Submitted</th>
+        <th>Completed By</th>
+        <th>Ticket ID</th>
+    </tr>
+{% for ticketdetail in completed_ticket %}
+    <tr>
+        <td>{{ ticketdetail.title }}</td>
+        <td><a href='/userdetails/{{ ticketdetail.filing_user.id }}/'>{{ ticketdetail.filing_user }}</a></td>
+        <td>{{ ticketdetail.date }}</td>
+        <td><a href='/userdetails/{{ ticketdetail.completing_user.id }}/'>{{ ticketdetail.completing_user }}</a></td>
+        <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
+    </tr>
+</table>
+{% endfor %}
+</div>
+<div id='invalid_tickets'>
+<h3>Invalid Tickets</h3>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Reported By</th>
+        <th>Date Submitted</th>
+        <th>Ticket ID</th>
+    </tr>
+{% for ticketdetail in invalid_ticket %}
+    <tr>
+        <td>{{ ticketdetail.title }}</td>
+        <td><a href='/userdetails/{{ ticketdetail.filing_user.id }}/'>{{ ticketdetail.filing_user }}</a></td>
+        <td>{{ ticketdetail.date }}</td>
+       <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
+    </tr>
+</table>
+{% endfor %}
+</div>
+</body>
+</html>

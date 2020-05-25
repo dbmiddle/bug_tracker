@@ -1,6 +1,7 @@
 from django import forms
 
 from tracker.models import MyUser
+from tracker.models import Ticket
 
 
 class LoginForm(forms.Form):
@@ -8,6 +9,20 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 
-class SubmitTicketForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    description = forms.CharField(widget=forms.Textarea)
+class SubmitTicketForm(forms.ModelForm):
+    class Meta:
+        model = Ticket
+        fields = [
+            'title',
+            'description'
+        ]
+
+
+class EditTicketForm(forms.ModelForm):
+    class Meta:
+        model = Ticket
+        fields = [
+            'title',
+            'description',
+            'status'
+        ]

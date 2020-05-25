@@ -1,0 +1,26 @@
+<a href='/'>Home</a>
+<h1>Ticket Detail</h1>
+<select name="forma" onchange="location = this.value;">
+    <option>Actions</option>
+    <option value='/ticket/edit/{{ data.id }}'>Edit</option>
+    <option value='/ticket/{{ data.id }}/assign'>Assign Ticket to You</option>
+    <option value='/ticket/{{ data.id }}/invalid'>Mark Ticket as Invalid</option>
+</select>
+    <h3>{{ data.title }}</h3>
+    <table>
+        <tr>
+            <th>Info</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>
+            <p>Status: {{ data.status }}</p>
+            <p>Assigned to: {{ data.assigned_user }}
+            <p>Submitted on: {{ data.date }}</p>
+            <p>Reported by: {{ data.filing_user }}</p>
+            </td>
+            <td>
+            {{ data.description }}
+            </td>
+        </tr>
+    </table>

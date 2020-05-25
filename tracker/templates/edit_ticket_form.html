@@ -1,0 +1,9 @@
+<a href='/'>Home</a>
+<h3>Edit Ticket</h3>
+<h4>Currently editing Ticket {{ data.id }}</h4>
+
+<form action='/ticket/edit/{{ data.id }}/' method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='Submit'>
+</form>
