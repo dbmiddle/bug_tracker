@@ -7,14 +7,15 @@
   </head>
 
 <body>
+<div style='margin-left: 50px; margin-top: 50px'>
 <a href='/logout/'>Logout</a>
 </br>
 </br>
-<p><a href='/submitticket'><button>Submit New Ticket</button></a></p>
 <h1>Bug Tracker</h1>
+<p style='float: right; margin-right: 50px'><a href='/submitticket'><button>Submit New Ticket</button></a></p>
 <div id='new_tickets'>
 <h3>New Tickets</h3>
-<table>
+<table style='width:100%'>
     <tr>
         <th>Title</th>
         <th>Reported By</th>
@@ -28,12 +29,12 @@
         <td>{{ ticketdetail.date }}</td>
         <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
     </tr>
-</table>
 {% endfor %}
+</table>
 </div>
 <div id='in_progress_tickets'>
 <h3>In-Progress Tickets</h3>
-<table>
+<table style='width:100%'>
     <tr>
         <th>Title</th>
         <th>Assigned To</th>
@@ -49,12 +50,12 @@
         <td>{{ ticketdetail.date }}</td>
         <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
     </tr>
-</table>
 {% endfor %}
+</table>
 </div>
 <div id='completed_tickets'>
 <h3>Completed Tickets</h3>
-<table>
+<table style='width: 100%'>
     <tr>
         <th>Title</th>
         <th>Reported By</th>
@@ -70,12 +71,12 @@
         <td><a href='/userdetails/{{ ticketdetail.completing_user.id }}/'>{{ ticketdetail.completing_user }}</a></td>
         <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
     </tr>
-</table>
 {% endfor %}
+</table>
 </div>
 <div id='invalid_tickets'>
 <h3>Invalid Tickets</h3>
-<table>
+<table style='width: 100%'>
     <tr>
         <th>Title</th>
         <th>Reported By</th>
@@ -89,8 +90,9 @@
         <td>{{ ticketdetail.date }}</td>
        <td><a href='/ticket/{{ ticketdetail.id }}/'>{{ ticketdetail.id }}</a></td>
     </tr>
-</table>
 {% endfor %}
+</table>
+</div>
 </div>
 </body>
 </html>

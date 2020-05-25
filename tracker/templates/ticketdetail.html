@@ -1,9 +1,17 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Ticket Details</title>
+  </head>
+<div style='margin-left: 50px; margin-top: 50px'>
 <a href='/'>Home</a>
 <h1>Ticket Detail</h1>
 <select name="forma" onchange="location = this.value;">
-    <option>Actions</option>
+    <option value='/ticket/{{ data.id }}/'>Actions</option>
     <option value='/ticket/edit/{{ data.id }}'>Edit</option>
     <option value='/ticket/{{ data.id }}/assign'>Assign Ticket to You</option>
+    <option value='/ticket/{{ data.id }}/complete'>Mark Ticket as Complete</option>
     <option value='/ticket/{{ data.id }}/invalid'>Mark Ticket as Invalid</option>
 </select>
     <h3>{{ data.title }}</h3>
@@ -24,3 +32,4 @@
             </td>
         </tr>
     </table>
+</div>
